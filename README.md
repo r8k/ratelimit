@@ -1,7 +1,6 @@
 # ratelimit
 [![GoDoc](https://godoc.org/github.com/r8k/ratelimit?status.svg)](https://godoc.org/github.com/r8k/ratelimit)
 
- Schedule the repeated execution of a function every `time.Duration`.
  Rate Limiter for Go, backed by Redis.
 
  View the [docs](http://godoc.org/github.com/r8k/ticker).
