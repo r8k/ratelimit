@@ -78,6 +78,7 @@ func BenchmarkGetSequential(b *testing.B) {
 	defer store.Close()
 	defer store.flush()
 
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		_, _ = store.Get("client_ip")
 	}
@@ -90,6 +91,7 @@ func BenchmarkGetParallel(b *testing.B) {
 	defer store.Close()
 	defer store.flush()
 
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.RunParallel(func(pb *testing.PB) {
 			for pb.Next() {

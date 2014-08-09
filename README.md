@@ -66,9 +66,9 @@ Retry After: 2014-08-09 17:14:55 +0530 IST
 ❯ go test -bench=.
 
 PASS
-BenchmarkGetSequential     10000        192374 ns/op
-BenchmarkGetParallel         100      20119241 ns/op
-ok      github.com/r8k/ratelimit    4.016s
+BenchmarkGetSequential     10000        190953 ns/op
+BenchmarkGetParallel         100      19507315 ns/op
+ok      github.com/r8k/ratelimit    3.954s
 ````
 
 ## License
