@@ -61,15 +61,16 @@ Remaining: 4999
 Retry After: 2014-08-09 17:14:55 +0530 IST
 ```
 
-# Benchmark
+## Benchmark
 ````
 ❯ go test -bench=.
 
 PASS
-BenchmarkGet       10000       8025034 ns/op
-ok      github.com/r8k/ratelimit    80.327s
+BenchmarkGetSequential     10000        192374 ns/op
+BenchmarkGetParallel         100      20119241 ns/op
+ok      github.com/r8k/ratelimit    4.016s
 ````
 
-# License
+## License
 
 MIT

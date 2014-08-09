@@ -69,13 +69,27 @@ func TestPingBadPort(t *testing.T) {
 	}
 }
 
-func BenchmarkGet(b *testing.B) {
-	store, _ := Init(&net.TCPAddr{Port: 6380})
+func BenchmarkGetSequential(b *testing.B) {
+	store, _ := Init(&net.TCPAddr{Port: 6379})
 	defer store.Close()
 	store.flush()
 
 	for i := 0; i < b.N; i++ {
 		_, _ = store.Get("client_ip")
+	}
+}
+
+func BenchmarkGetParallel(b *testing.B) {
+	store, _ := Init(&net.TCPAddr{Port: 6379})
+	defer store.Close()
+	store.flush()
+
+	for i := 0; i < b.N; i++ {
+		b.RunParallel(func(pb *testing.PB) {
+			for pb.Next() {
+				_, _ = store.Get("client_ip")
+			}
+		})
 	}
 }
 
