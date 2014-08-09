@@ -118,4 +118,8 @@ func ExampleGet() {
 	fmt.Printf("Used: %d\n", Limit.Used)
 	fmt.Printf("Remaining: %d\n", Limit.Remaining)
 	fmt.Printf("Retry After: %s\n", Limit.RetryAfter)
+	// Quota: 5000
+	// Used: 1
+	// Remaining: 4999
+	// Retry After: 2014-08-09 17:14:55 +0530 IST
 }
