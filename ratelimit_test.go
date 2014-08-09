@@ -25,10 +25,12 @@ func TestRedisLimiter(t *testing.T) {
 	if err != nil {
 		t.Fatal(err.Error())
 	}
-	defer store.Close()
 
 	// empty `Redis` for Testing
 	store.flush()
+
+	defer store.Close()
+	defer store.flush()
 
 	// Get `RateLimit` for `identifier` client_ip
 	if Limit, err = store.Get("client_ip"); err != nil {
@@ -71,8 +73,10 @@ func TestPingBadPort(t *testing.T) {
 
 func BenchmarkGetSequential(b *testing.B) {
 	store, _ := Init(&net.TCPAddr{Port: 6379})
-	defer store.Close()
 	store.flush()
+
+	defer store.Close()
+	defer store.flush()
 
 	for i := 0; i < b.N; i++ {
 		_, _ = store.Get("client_ip")
@@ -81,8 +85,10 @@ func BenchmarkGetSequential(b *testing.B) {
 
 func BenchmarkGetParallel(b *testing.B) {
 	store, _ := Init(&net.TCPAddr{Port: 6379})
-	defer store.Close()
 	store.flush()
+
+	defer store.Close()
+	defer store.flush()
 
 	for i := 0; i < b.N; i++ {
 		b.RunParallel(func(pb *testing.PB) {
