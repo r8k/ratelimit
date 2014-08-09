@@ -10,7 +10,7 @@
  * [Redigo](https://github.com/garyburd/redigo/)
 
 ## Features
- * Utilises connection pooling from Redigo
+ * Utilises connection pool from Redigo
  * Handles race conditions
  * [Efficient](https://github.com/r8k/ratelimit#benchmark)
  * Distributed Store: coming soon
